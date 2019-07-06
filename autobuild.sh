@@ -17,7 +17,7 @@
 
 set -e
 
-cd ~/tridactyl
+cd ~/projects/tridactyl
 
 PATH=$(yarn bin):"$PATH"
 export PATH
@@ -48,11 +48,11 @@ if [ "$1" = "--force" ] || ! git diff --exit-code --quiet master origin/master; 
 
     scripts/sign
     cp "$(ls --sort=t web-ext-artifacts/*.xpi | head -n1)" web-ext-artifacts/tridactyl-latest.xpi
-    rsync -rt ~/tridactyl/web-ext-artifacts/ ~/public_html/betas
+    rsync -rt ~/projects/tridactyl/web-ext-artifacts/ ~/public_html/betas
 
     scripts/sign nonewtab
     cp "$(ls --sort=t web-ext-artifacts/nonewtab/*.xpi | head -n1)" web-ext-artifacts/nonewtab/tridactyl_no_new_tab_beta-latest.xpi
-    rsync -rt ~/tridactyl/web-ext-artifacts/ ~/public_html/betas
+    rsync -rt ~/projects/tridactyl/web-ext-artifacts/ ~/public_html/betas
 
     # We suspect this fails sometimes. We want to still publish the latest xpi if it does fail.
     # Wine currently not installed on the build bot
