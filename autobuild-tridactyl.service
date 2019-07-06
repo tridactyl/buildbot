@@ -2,4 +2,4 @@
 Description=autobuild-tridactyl
 
 [Service]
-ExecStart=%h/projects/tridactyl/autobuild-tridactyl.sh
+ExecStart=%h/projects/buildbot/autobuild.sh
