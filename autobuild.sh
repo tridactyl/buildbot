@@ -46,6 +46,10 @@ if [ "$1" = "--force" ] || ! git diff --exit-code --quiet master origin/master; 
     git reset --hard origin/master
     yarn install
 
+    # Delete old artifacts so we don't keep two copies.
+    rm -rf ~/projects/tridactyl/web-ext-artifacts/
+    mkdir -p ~/projects/tridactyl/web-ext-artifacts/
+
     scripts/sign
     cp "$(ls --sort=t web-ext-artifacts/*.xpi | head -n1)" web-ext-artifacts/tridactyl-latest.xpi
     rsync -rt ~/projects/tridactyl/web-ext-artifacts/ ~/public_html/betas
